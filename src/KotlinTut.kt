@@ -6,6 +6,9 @@ package demo
 
 import java.time.ZoneId
 
+// import from java
+import java.util.Random
+
 fun  main(args : Array<String>) {
     System.out.println("hello world")
 
@@ -143,4 +146,74 @@ fun  main(args : Array<String>) {
     for (x in 1 ..10) {
         println("loooping $x")
     }
+
+    val rand = Random()
+    val MagicNum = rand.nextInt(50) + 1
+
+    var guess = 0
+
+    while(MagicNum != guess) {
+        guess += 1
+    }
+
+    println("Magic number was $guess")
+
+    // continue and break
+    for(x in 1..20) {
+        if (x%2 == 0) {
+            continue
+        }
+        println("Odd: $x")
+
+        if (x==15) break
+    }
+
+
+    var arr3 : Array<Int> = arrayOf(3,6,9)
+    for (i in arr3.indices){
+        println("mult 3: ${arr3[i]}")
+    }
+
+    for ((index, value) in arr3.withIndex()){
+        println("index 3: $index value = $value")
+    }
+
+
+    /**
+     * functions
+     */
+    fun add(num1: Int, num2: Int) : Int = num1+ num2
+    println("5 + 4 = ${add(5,4)}")
+
+    fun addDef(num1: Int = 3, num2: Int = 3) : Int = num1+ num2
+    println("5 + 4 = ${addDef()}")
+
+    // named parameters
+    println("5 + 4 = ${add(num2=5,num1 = 4)}")
+
+    fun sayHello(name: String) : Unit = println("Hello $name")
+    sayHello("Adi")
+
+    val(two, three) = nextTwo(1)
+    println("1 $two $three")
+
+    println("Sum = ${getSum(1,2,3,4,5)}")
+
+    // function literals
+    val multitply = {num1: Int, num2: Int -> num1 * num2}
+    println("5 * 4 = ${multitply(5,4)}")
+
+}
+
+
+
+fun nextTwo(num: Int): Pair<Int,Int> {
+    return Pair(num+1,num+2)
+}
+
+fun getSum(vararg nums: Int) : Int{
+    var sum = 0
+
+    nums.forEach { n-> sum += n }
+    return sum
 }
