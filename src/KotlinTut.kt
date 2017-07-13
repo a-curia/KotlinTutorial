@@ -203,6 +203,18 @@ fun  main(args : Array<String>) {
     val multitply = {num1: Int, num2: Int -> num1 * num2}
     println("5 * 4 = ${multitply(5,4)}")
 
+
+    // recursive functions
+    fun fact(x: Int) : Int {
+        tailrec fun factTail(y: Int, z: Int) : Int {
+            if (y==0) return z
+            else return factTail(y - 1, y * z)
+        }
+        return factTail(x, 1)
+    }
+
+    // higher order functions
+
 }
 
 
